@@ -1,12 +1,16 @@
+open_exp = ['[', '(', '{']
+close_exp = [']', ')', '}']
+
 def check_exp(exp):
     stack = list()
-    open_exp = ['[', '(', '{']
-    close_exp = [']', ')', '}']
     for i in range(0, len(exp)):
         curr = exp[i]
         if curr in open_exp:
             stack.append(exp[i])
         elif curr in close_exp:
+            if not stack:
+                print 'False'
+                return
             while stack:
                 top = stack.pop()
                 if curr == ']' and top == '[':
@@ -25,7 +29,7 @@ def check_exp(exp):
         print 'True'
 
 def main():
-    exp = "["
+    exp = "[}]"
     check_exp(exp)
     
 main()
