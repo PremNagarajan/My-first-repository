@@ -68,39 +68,49 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        l1.reverseIList()
-        l2.reverseIList()
+        #1.reverseIList()
+        #l2.reverseIList()
         if l1.length() < l2.length():
             temp = l1
             l1 = l2
             l2 = temp
 
-        l1.printList()
-        l2.printList()
         result = LinkedList()
         remainder = None
-        while True:
-            a = l1.pop()
-            print a
-            if a is None and not remainder:
-                break
-            a = a if a else 0
-            b = l2.pop()
-            b = b if b else 0
+
+        list1 = l1.head
+        list2 = l2.head
+        while list1 and list2:
+            a = list1.val
+            b = list2.val
             if remainder:
                 sum = a + b + remainder
             else:
                 sum = a + b
-            quotient = sum / 10
-            remainder = sum % 10
-            print quotient, remainder
+            quotient = sum % 10
+            remainder = sum / 10
             result.push(quotient)
+            list1 = list1.next
+            list2 = list2.next
+
+        while list1:
+            if remainder:
+                sum = list1.val + remainder
+                quotient = sum % 10
+                remainder = sum / 10
+                result.push(quotient)
+            else:
+                result.push(list1.val)
+            list1 = list1.next
+
+        result.reverseList()
         return result
 
 l1 = LinkedList()
 l1.push(3)
 l1.push(4)
 l1.push(2)
+l1.push(1)
 l1.printList()
 
 l2 = LinkedList()
@@ -110,5 +120,5 @@ l2.push(5)
 l2.printList()
 
 s = Solution()
-#res = s.addTwoNumbers(l1, l2)
-#res.printList()
+res = s.addTwoNumbers(l2, l1)
+res.printList()
