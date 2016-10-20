@@ -1,32 +1,53 @@
-# Complete the function below.
+"""
 
-def  countPairs(numbers, k):
-    count = 0
-    numbers = sorted(numbers)
-    
+Count all distinct pairs with difference equal to k
+
+Given an integer array and a positive integer k,
+count all distinct pairs with difference equal to k.
+
+"""
+
+# Works only for distinct elements
+def pairs(arr,k):
+    #a contains array of numbers and k is the value of difference
+    n = len(arr)
     l = 0
-    r = 0
-    prev_l = None
-    prev_r = None
-    while r < len(numbers):
-        if (numbers[r] - numbers[l]) == k:
-            if prev_l and prev_r:
-                if numbers[r] == prev_r or numbers[l] == prev_l:
-                    l += 1
-                    r += 1
-                    continue
+    r = l + 1
+    arr = sorted(arr)
+    count = 0
+    
+    while r < n:
+        if arr[r] - arr[l] == k:
             count += 1
             l += 1
             r += 1
-            prev_l = numbers[l]
-            prev_r = numbers[r]
-        elif (numbers[r] - numbers[l]) > k:
-            l += 1
-            #prev_l = numbers[l]
-        else:
+        elif arr[r] - arr[l] < k:
             r += 1
-            #prev_r = numbers[r]
-    
-    return count
+        else:
+            l += 1
 
-print countPairs([1, 5, 3, 4, 2], 1)
+    return count
+    
+# Handles duplicate case
+def pairs2(arr,k):
+    # a contains array of numbers and k is the value of difference
+    n = len(arr)
+    temp = dict()
+    
+    for a in arr:
+        if a in temp:
+            temp[a] += 1
+        else:
+            temp[a] = 1
+
+    count = 0
+    for a in arr:
+        if a+k in temp and temp[a+k] > 0:
+            count += 1
+        if a-k in temp  and temp[a-k] > 0:
+            count += 1
+        temp[a] -= 1
+            
+    return count
+    
+print pairs2([1, 5, 5, 3, 4, 2], 2)
