@@ -10,6 +10,6 @@ def  buildSubsequences( s):
     for a in all:
         if a:
             result.append(''.join(a))
-    return sorted(result)
+    return sorted(list(set(result)))
     
-print buildSubsequences('hello')
+print buildSubsequences('abc')
