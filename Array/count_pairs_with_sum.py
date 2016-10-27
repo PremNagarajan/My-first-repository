@@ -1,8 +1,7 @@
 """
-Count pairs with given sum
+Count pairs with given sum.
 
-Given an array of integers, and a number ‘sum’,
-find the number of pairs of integers in the array whose sum is equal to ‘sum’.
+Given an array of ints and a number sum, find the pairs which sum upto it.
 
 Below is the Algorithm.
 
@@ -12,7 +11,7 @@ Below is the Algorithm.
 any other element (other than itself!) to give the desired sum.
 Increment the counter accordingly.
 
-3) After completion of second traversal, we’d have twice the required value
+3) After completion of second traversal, we would have twice the required value
 stored in counter because every pair is counted two times.
 Hence divide count by 2 and return.
 
@@ -36,6 +35,6 @@ def countPairs(arr, k):
             
     return count / 2
     
-arr = [1, 5, 7, -1, 5]
+arr = [3, 3]
 k = 6
 print countPairs(arr, k)
