@@ -9,8 +9,7 @@ def check_exp(exp):
             stack.append(exp[i])
         elif curr in close_exp:
             if not stack:
-                print 'False'
-                return
+                return 'False'
             while stack:
                 top = stack.pop()
                 if curr == ']' and top == '[':
@@ -20,16 +19,15 @@ def check_exp(exp):
                 elif curr == ')' and top == '(':
                     break
                 else:
-                    print 'False'
-                    return
+                    return 'False'
 
     if stack:
-        print 'False'
+        return 'False'
     else:
-        print 'True'
+        return 'True'
 
 def main():
-    exp = "[}]"
-    check_exp(exp)
+    exp = "[{}]"
+    print check_exp(exp)
     
 main()
