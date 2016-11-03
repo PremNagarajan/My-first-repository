@@ -45,63 +45,6 @@ class Solution:
                     
         return result[len(s)][len(p)]
                 
-
-'''
-class Solution(object):
-    def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
-        n = len(s) + 1
-        m = len(p) + 1
-        
-        # Initialize a temp matrix of size n, m
-        DP = [[False for j in xrange(m)] for i in xrange(n)]
-        
-        DP[0][0] = True
-        
-        for j in xrange(1, m):
-            if p[j-1] == '*':
-                DP[0][j] = DP[0][j-1]
-        
-        for i in xrange(1, n):
-            for j in xrange(1, m):
-                if p[j-1] == '*':
-                    DP[i][j] = DP[i][j-1] or DP[i-1][j]
-                    
-                elif p[j-1] == '.' or s[i-1] == p[j-1]:
-                    DP[i][j] = DP[i-1][j-1]
-
-                else:
-                    DP[i][j] = False
-                    
-        return DP[n-1][m-1]
-
-class Solution(object):
-    def isMatch(self, s, p):
-        """
-        :type s: str
-        :type p: str
-        :rtype: bool
-        """
-        if len(s) == 0 and len(p) == 0:
-            return True
-
-        if len(s) > 0 and len(p) > 0 and \
-            (s[0] == p[0] or p[0] == '.'):
-            return self.isMatch(s[1:], p[1:])
-
-        if len(s) > 0 and len(p) > 0 and \
-            p[0] == '*':
-            return self.isMatch(s, p[1:]) or \
-                self.isMatch(s[1:], p) or \
-                self.isMatch(s[1:], p[1:])
-
-        else:
-            return False
-'''
 s = Solution()
 print(s.isMatch("aa", "a*"))
 
