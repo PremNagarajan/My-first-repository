@@ -36,8 +36,6 @@ class Solution(object):
         '''
         DP = [[0 for j in xrange(n)] for i in xrange(m)]
         
-        DP[m-1][n-1] = 0
-        
         for i in xrange(m):
             DP[i][n-1] = 1
             
