@@ -44,7 +44,7 @@ def maximize_distance(arr):
             
     max_so_far, i, j = -1, 0, 0
     
-    while i < n and j <n:
+    while i < n and j < n:
         if left[i] > right[j]:
             i += 1
         else:
