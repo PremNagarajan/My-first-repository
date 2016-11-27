@@ -21,6 +21,15 @@ def in_order_traversal(root):
     print
 
 
+def in_order_traversal_2(root):
+    if not root:
+        return
+
+    in_order_traversal_2(root.left)
+    print root.data,
+    in_order_traversal_2(root.right)
+    
+    
 root = TreeNode('a')
 root.left = TreeNode('b')
 root.left.left = TreeNode('d')
